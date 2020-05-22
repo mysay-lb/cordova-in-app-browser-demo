@@ -44,3 +44,13 @@ var app = {
 };
 
 app.initialize();
+
+function test()
+{
+    var headers = [{"key":"token","value":"xxxxxxx"}];
+    cordova.InAppBrowser.open("https://url","_blank", "location=no,hidden=no",  headers, null);
+}
+
+document.getElementById('test').addEventListener('click',function(){
+    test();
+})
