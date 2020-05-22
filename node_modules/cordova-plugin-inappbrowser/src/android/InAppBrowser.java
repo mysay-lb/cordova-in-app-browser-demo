@@ -1096,6 +1096,8 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout webViewLayout = new RelativeLayout(cordova.getActivity());
                 webViewLayout.addView(inAppWebView);
                 main.addView(webViewLayout);
+                inAppWebView.addJavascriptInterface(new WebAppInterface(cordova.getActivity()), "Android");
+
 
                 // Don't add the footer unless it's been enabled
                 if (showFooter) {
@@ -1572,6 +1574,33 @@ public class InAppBrowser extends CordovaPlugin {
 
             // By default handle 401 like we'd normally do!
             super.onReceivedHttpAuthRequest(view, handler, host, realm);
+        }
+    }
+
+    public class WebAppInterface {
+        Context mContext;
+
+        /**
+         * Instantiate the interface and set the context
+         */
+        WebAppInterface(Context c) {
+            mContext = c;
+        }
+
+        /**
+         * Show a toast from the web page
+         */
+        @JavascriptInterface
+        public void exit() {
+            getInAppBrowser().closeDialog();
+        }
+
+        @JavascriptInterface
+        public void share(String text) {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_TEXT, text);
+            cordova.getActivity().startActivity(Intent.createChooser(i, "Share"));
         }
     }
 }

@@ -47,7 +47,7 @@ app.initialize();
 
 function test()
 {
-    var headers = [{"key":"token","value":"xxxxxxx"}];
+    var headers = [{"key":"token","value":""}];
     cordova.InAppBrowser.open("https://url","_blank", "location=no,hidden=no",  headers, null);
 }
 

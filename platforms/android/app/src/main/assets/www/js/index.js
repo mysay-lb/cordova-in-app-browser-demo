@@ -47,8 +47,8 @@ app.initialize();
 
 function test()
 {
-    var headers = [{"key":"token","value":"xxxxxxx"}];
-    cordova.InAppBrowser.open("https://url","_blank", "location=no,hidden=no",  headers, null);
+    var headers = [{"key":"x-mysaytoken","value":"ewogICJwaG9uZV90eXBlX2lkIiA6ICIxIiwKICAiZGV2aWNlVG9rZW4iIDogIjdmYzBiYTc2MGZlYWIyMGY2OTA0YTliN2JkNDg2MzhlNmMxMGU4OTc5YmQyMmU1MGIwYWU2NWRhZWRjYjdkY2QiLAogICJsb25naXR1ZGUiIDogIiIsCiAgIm9zVmVyc2lvbiIgOiAiVmVyc2lvbiAxMS40IChCdWlsZCAxNUY3OSkiLAogICJsYXRpdHVkZSIgOiAiIiwKICAiY291bnRyeUNvZGUiIDogImxiIiwKICAidXNlcklkIiA6ICIxMDQ5NSIsCiAgImxhbmd1YWdlIiA6ICJlbiIsCiAgImZjbVRva2VuIiA6ICJjZW5HWVFRWGFhODpBUEE5MWJIdF96YTJMYzVDbUxoQU91REJRRmJlZFdKMUpGWDhJWVJjSmh2ZFllOUZOa29yZEJCNThBeEd4SUF3cjI4ei01Wjdqb2gtNmV1YlRfT3plbXFPMjNpckEzdlFvaTc5WmF3LWZoRUduTW9zbkgwb0xOTlhEa2dFcWhMWUI2QmZ1dzVhQXN2eiIsCiAgImFwcFZlcnNpb24iIDogIjEuOTkuMSIsCiAgInZlbmRvcklkIiA6ICIwODYxQjA0QS1DQTRFLTRFMDAtQkZBMi00NUJDRTQ4Q0M0MjUiLAogICJwaG9uZU51bWJlciIgOiAiOTYxNzA1MDk0NTAiCn0="}];
+    cordova.InAppBrowser.open("https://ramadan.microapp.mysayapp.com","_blank", "location=no,hidden=no",  headers, null);
 }
 
 document.getElementById('test').addEventListener('click',function(){
