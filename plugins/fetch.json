@@ -10,7 +10,7 @@
   "cordova-plugin-inappbrowser": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/mysay-lb/cordova-plugin-inappbrowser"
+      "id": "https://github.com/mysay-lb/cordova-plugin-inappbrowser.git"
     },
     "is_top_level": true,
     "variables": {}

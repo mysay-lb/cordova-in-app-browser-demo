@@ -362,7 +362,7 @@ public class InAppBrowser extends CordovaPlugin {
             for(int i = 0 ; i <jsonArrayHeaders.length() ; ++i) {
                 try {
                     String key = ((JSONObject)jsonArrayHeaders.get(i)).get("key").toString().replace("@e","=").replace("@c", ",").replace("@a","@");
-                    String value = ((JSONObject)jsonArrayHeaders.get(i)).get("key").toString().replace("@e","=").replace("@c", ",").replace("@a","@");
+                    String value = ((JSONObject)jsonArrayHeaders.get(i)).get("value").toString().replace("@e","=").replace("@c", ",").replace("@a","@");
                     map.put(key, value);
                 } catch (JSONException e) {
                     e.printStackTrace();
