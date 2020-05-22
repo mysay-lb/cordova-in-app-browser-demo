@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'C:\Users\Haidar\Demo\platforms\ios\DemoApp' do
-	project 'C:\Users\Haidar\Demo\platforms\ios\DemoApp.xcodeproj'
+target 'DemoApp' do
+	project 'DemoApp.xcodeproj'
 
 end

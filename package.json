@@ -14,18 +14,20 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^8.1.0",
-    "cordova-ios": "^5.1.1"
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-inappbrowser": "git+https://github.com/mysay-lb/cordova-plugin-inappbrowser.git"
   },
   "devDependencies": {
     "cordova-plugin-whitelist": "^1.3.4"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

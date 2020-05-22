@@ -6,5 +6,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mysay-lb/cordova-plugin-inappbrowser"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
