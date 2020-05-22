@@ -33,6 +33,7 @@
 #define    kInAppBrowserToolbarBarPositionTop @"top"
 
 #define    IAB_BRIDGE_NAME @"cordova_iab"
+#define    MYSAY_BRIDGE_NAME @"observe"
 
 #define    TOOLBAR_HEIGHT 44.0
 #define    STATUSBAR_HEIGHT 20.0
@@ -579,6 +580,22 @@ static CDVWKInAppBrowser* instance = nil;
 
 #pragma mark WKScriptMessageHandler delegate
 - (void)userContentController:(nonnull WKUserContentController *)userContentController didReceiveScriptMessage:(nonnull WKScriptMessage *)message {
+    
+    // Handle "back" on MYSAY_BRIDGE_NAME
+    if ([message.name isEqualToString:MYSAY_BRIDGE_NAME]){
+        if ([message.body isKindOfClass:[NSDictionary class]]){
+            NSDictionary *messageDictionary = message.body;
+            
+            if ([[messageDictionary objectForKey:@"action"] isEqualToString:@"back"]){
+                [self close:nil];
+            }
+        }
+        else if ([message.body isKindOfClass:[NSString class]]){
+            if ([message.body isEqualToString:@"back"]){
+                [self close:nil];
+            }
+        }
+    }
 
     CDVPluginResult* pluginResult = nil;
 
@@ -669,6 +686,7 @@ static CDVWKInAppBrowser* instance = nil;
     }
 
     [self.inAppBrowserViewController.configuration.userContentController removeScriptMessageHandlerForName:IAB_BRIDGE_NAME];
+    [self.inAppBrowserViewController.configuration.userContentController removeScriptMessageHandlerForName:MYSAY_BRIDGE_NAME];
     self.inAppBrowserViewController.configuration = nil;
 
     [self.inAppBrowserViewController.webView stopLoading];
@@ -750,6 +768,7 @@ BOOL isExiting = FALSE;
     configuration.processPool = [[CDVWKProcessPoolFactory sharedFactory] sharedProcessPool];
 #endif
     [configuration.userContentController addScriptMessageHandler:self name:IAB_BRIDGE_NAME];
+    [configuration.userContentController addScriptMessageHandler:self name:MYSAY_BRIDGE_NAME];
 
     //WKWebView options
     configuration.allowsInlineMediaPlayback = _browserOptions.allowinlinemediaplayback;
@@ -1228,7 +1247,7 @@ BOOL isExiting = FALSE;
 
 #pragma mark WKScriptMessageHandler delegate
 - (void)userContentController:(nonnull WKUserContentController *)userContentController didReceiveScriptMessage:(nonnull WKScriptMessage *)message {
-    if (![message.name isEqualToString:IAB_BRIDGE_NAME]) {
+    if (![message.name isEqualToString:IAB_BRIDGE_NAME] && ![message.name isEqualToString:MYSAY_BRIDGE_NAME]) {
         return;
     }
     //NSLog(@"Received script message %@", message.body);
